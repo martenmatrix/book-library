@@ -22,13 +22,16 @@
 
         <label for="input-book-pages">Pages</label>
         <input id="input-book-pages" type="number" required/>
-
-        <input type="checkbox" id="scales" name="scales">
+        <div id="checkbox">
+            <input type="checkbox" id="read"/>
+            <label for="read">Completed the book.</label>
+        </div>
 
         <input type="submit" value="Add book">
         </form>
     </div>
 
+    <!--In this section, the created books will appear.-->
     <div id="books">
     </div>
 </body>

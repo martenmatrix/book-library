@@ -9,9 +9,21 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="book-input">
+    <div id="book-input-modal">
+        <form action="#" class="book-input">
         <p class="header">Add a new book.</p>
-        
+
+        <label for="input-book-title">Title</label>
+        <input id="input-book-title" type="text"></input>
+
+        <label for="input-book-author">Author</label>
+        <input id="input-book-author" type="text"></input>
+
+        <label for="input-book-pages">Pages</label>
+        <input id="input-book-pages" type="text"></input>
+
+        <input type="submit" value="Add book"></input>
+        </form>
     </div>
 
     <div id="books">

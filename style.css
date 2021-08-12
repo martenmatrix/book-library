@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+/*Book boxes*/
 #books {
     display: flex;
     align-items: center;
@@ -18,6 +28,7 @@
     padding: 1em;
 
     position: relative;
+    z-index: -1;
 }
 
 .book hr {
@@ -47,4 +58,81 @@
     left: 0;
     right: 0;
     text-align: center;
+}
+
+
+/* Modal */
+#book-input-modal {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.book-input {
+    background-color: white;
+    position: fixed;
+    border-radius: 5px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 25rem;
+    width: 15rem;
+    padding: 3rem;
+    padding-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.book-input label {
+    padding-top: 0.5em;
+}
+
+.book-input input:not(input[type="submit"]) {
+    background-color: white;
+
+    border: solid 1px grey;
+    border-radius: 4px;
+}
+
+.book-input input[type="submit"] {
+    border: solid 1px grey;
+    border-radius: 4px;
+    background-color: white;
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 10rem;
+
+    width: 10em;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+}
+
+.header {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#close-button {
+    position: absolute;
+    right: 0.6rem;
+    top: 0.4rem;
+
+    font-size: 1.5em;
+
+    transform: rotate(45deg);
+    opacity: 0.2;
+
+    transition-duration: 500ms;
+    transition-property: opacity;
+    cursor: pointer;
+    }
+
+#close-button:hover {
+    opacity: 1;
 }

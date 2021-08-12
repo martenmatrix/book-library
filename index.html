@@ -11,16 +11,17 @@
 <body>
     <div id="book-input-modal">
         <form action="#" class="book-input">
+        <div id="close-button">+</div>
         <p class="header">Add a new book.</p>
 
         <label for="input-book-title">Title</label>
-        <input id="input-book-title" type="text"></input>
+        <input id="input-book-title" type="text" required></input>
 
         <label for="input-book-author">Author</label>
-        <input id="input-book-author" type="text"></input>
+        <input id="input-book-author" type="text" required></input>
 
         <label for="input-book-pages">Pages</label>
-        <input id="input-book-pages" type="text"></input>
+        <input id="input-book-pages" type="number" required></input>
 
         <input type="submit" value="Add book"></input>
         </form>

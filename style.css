@@ -15,7 +15,7 @@ textarea:focus, input:focus{
     flex-wrap: wrap;
 }
 
-.book {
+.book, #add-book{
     display: block;
     border: solid 1px black;
     border-radius: 5px;
@@ -141,4 +141,15 @@ textarea:focus, input:focus{
 #checkbox {
     display: inline;
     margin-top: 1em
+}
+
+#add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-book #plus {
+    font-size: 10em;
+    text-align: center;
 }

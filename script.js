@@ -1,3 +1,7 @@
+
+const modal = document.querySelector('#book-input-modal');
+const bookSection = document.querySelector('#added-books');
+
 let myLibrary = [];
 
 function Book(title, author, amountPages, isRead) {
@@ -16,7 +20,6 @@ function addBookToLibrary(object) {
 };
 
 function displayEachBook() {
-    const bookSection = document.querySelector('#books');
 
     myLibrary.forEach(book => {
         //create the informations box
@@ -52,13 +55,12 @@ function displayEachBook() {
 };
 
 function closeModal() {
-    const modal = document.querySelector('#book-input-modal');
     modal.style.display = 'none';
 };
 
 function showModal() {
-
-}
+    modal.style.display = 'block';
+};
 
 function getBookFromInput() {
     const titleInput = document.querySelector('#input-book-title').value;
@@ -78,11 +80,12 @@ function addEventListeners() {
 
     const closeModalButton = document.querySelector('#close-button');
     closeModalButton.addEventListener('click', () => closeModal());
+
+    const showModalDiv = document.querySelector('#add-book');
+    showModalDiv.addEventListener('click', () => showModal());
 };
+
+addEventListeners();
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 addBookToLibrary(theHobbit);
 displayEachBook();
-
-addEventListeners();
-
-console.log(theHobbit.info());

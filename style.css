@@ -63,7 +63,7 @@ textarea:focus, input:focus{
 
 /* Modal */
 #book-input-modal {
-    display: block;
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;

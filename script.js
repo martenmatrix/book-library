@@ -51,8 +51,38 @@ function displayEachBook() {
     );
 };
 
+function closeModal() {
+    const modal = document.querySelector('#book-input-modal');
+    modal.style.display = 'none';
+};
+
+function showModal() {
+
+}
+
+function getBookFromInput() {
+    const titleInput = document.querySelector('#input-book-title').value;
+    const authorInput = document.querySelector('#input-book-author').value;
+    const pagesInput = document.querySelector('#input-book-pages').value;
+    const isReadInput = document.querySelector('#read').checked;
+
+    return new Book(titleInput, authorInput, pagesInput, isReadInput);
+};
+
+function addEventListeners() {
+    const submitBookForm = document.querySelector('.book-input input[type="submit"]');
+    submitBookForm.addEventListener('onsubmit', (e) => {
+        e.preventDefault();
+        createBookFromInput();
+    });
+
+    const closeModalButton = document.querySelector('#close-button');
+    closeModalButton.addEventListener('click', () => closeModal());
+};
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 addBookToLibrary(theHobbit);
 displayEachBook();
+
+addEventListeners();
 
 console.log(theHobbit.info());

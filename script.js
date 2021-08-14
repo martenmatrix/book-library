@@ -4,9 +4,21 @@ const modalForm = document.querySelector('#book-input-modal form')
 const bookSection = document.querySelector('#added-books');
 
 
-let currentTimer;
+let currentTime;
 let myLibrary = [];
 
+function updateCookies() {
+    let myLibraryJSON = JSON.stringify(myLibrary);
+    localStorage.setItem('booklist', myLibraryJSON);
+};
+
+//if array available sets it to the above created empty array
+function checkCookies() {
+    if (localStorage.getItem('booklist')) {
+        myLibraryJSON = localStorage.getItem('booklist');
+        myLibrary = JSON.parse(myLibraryJSON);
+    };
+};
 function Book(title, author, amountPages, isRead) {
     this.title = title;
     this.author = author;
@@ -100,9 +112,11 @@ function stopTimer(e) {
     if (currentTimer >= 2700) {
         e.target.remove();
         removeBookFromLibrary(object);
+        updateCookies();
     } else if (currentTimer <= 1000) {
         toggleReadStatus(object);
         refreshDisplay();
+        updateCookies();
     };
 };
 
@@ -135,6 +149,7 @@ function submitBookForm(e) {
     addBookToLibrary(newBook);
 
     closeModal();
+    updateCookies();
     refreshDisplay();
 };
 
@@ -150,6 +165,5 @@ function addEventListeners() {
 };
 
 addEventListeners();
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary(theHobbit);
+checkCookies();
 displayEachBook();

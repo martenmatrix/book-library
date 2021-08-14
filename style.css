@@ -8,18 +8,15 @@ textarea:focus, input:focus{
 }
 
 /*Book boxes*/
+#added-books {
+    display: contents;
+}
+
 #books {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap:  wrap;
-}
-
-#added-books {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap:  wrap;
+    flex-wrap: wrap;
 }
 
 .book, #add-book{
@@ -64,6 +61,17 @@ textarea:focus, input:focus{
     bottom: 0;
     left: 0;
     right: 0;
+    text-align: center;
+}
+
+#add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-book #plus {
+    font-size: 10em;
     text-align: center;
 }
 
@@ -150,15 +158,4 @@ textarea:focus, input:focus{
 #checkbox {
     display: inline;
     margin-top: 1em
-}
-
-#add-book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#add-book #plus {
-    font-size: 10em;
-    text-align: center;
 }

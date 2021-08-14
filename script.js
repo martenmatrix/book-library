@@ -22,19 +22,27 @@ function addBookToLibrary(object) {
     myLibrary.push(object);
 };
 
-function removeBookFromLibrary(bookTitle) {
-    const objectToRemove = myLibrary.find(currentBook => currentBook.title === bookTitle);
-
-    // returns if title is not found in one of the objects of myLibrary
-    if (objectToRemove === undefined) return;
-    const indexOfObject = myLibrary.indexOf(objectToRemove);
-
+function removeBookFromLibrary(object) {
+    const indexOfObject = myLibrary.indexOf(object);
     myLibrary.splice(indexOfObject, 1);
+};
+
+function getObjectFromTitle(bookTitle) {
+    const object = myLibrary.find(currentBook => currentBook.title === bookTitle);
+    return object;
 };
 
 function resetDispay() {
     const allBooksDivs = document.querySelectorAll('#books #added-books .book');
     allBooksDivs.forEach(bookDiv => bookDiv.remove());
+};
+
+function toggleReadStatus(object) {
+    if (object.isRead === true) {
+        object.isRead = false;
+    } else {
+        object.isRead = true;
+    };
 };
 
 function displayEachBook() {
@@ -44,6 +52,9 @@ function displayEachBook() {
         let currentBook = document.createElement('div');
         currentBook.setAttribute('data-title', book.title);
         currentBook.classList.add('book');
+
+        //add read class, if book was read
+        if (book.isRead) currentBook.classList.add('read');
 
         //create the elements for the information box
         let currentTitle = document.createElement('p');
@@ -80,13 +91,18 @@ function startTimer(e) {
     currentTimer = Date.now();
 };
 
-//stops the timer and deletes the element, if div was pressed for 5 seconds
+//stops the timer and deletes the element, if div was pressed for 2.8 seconds
+//if timer is less than 1 second, counts the book as read
 function stopTimer(e) {
     currentTimer = Date.now() - currentTimer;
 
-    if (currentTimer > 3000) {
+    let object = getObjectFromTitle(e.target.dataset.title);
+    if (currentTimer >= 2700) {
         e.target.remove();
-        removeBookFromLibrary(e.target.dataset.title);
+        removeBookFromLibrary(object);
+    } else if (currentTimer <= 1000) {
+        toggleReadStatus(object);
+        refreshDisplay();
     };
 };
 

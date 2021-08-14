@@ -12,7 +12,14 @@ textarea:focus, input:focus{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap:  wrap;
+}
+
+#added-books {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:  wrap;
 }
 
 .book, #add-book{
@@ -64,7 +71,7 @@ textarea:focus, input:focus{
 /* Modal */
 #book-input-modal {
     display: none;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);

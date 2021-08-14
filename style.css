@@ -19,6 +19,17 @@ textarea:focus, input:focus{
     flex-wrap: wrap;
 }
 
+.book {
+    background-size: 200% 200%;
+    background-image: linear-gradient(to top, #ff0000 50%, transparent 50%);
+}
+
+.book:active {
+    background-image: linear-gradient(to top, #ff0000 51%, transparent 50%);
+    background-position: 0 100%;
+    transition: background-position 3200ms;
+}
+
 .book, #add-book{
     display: block;
     border: solid 1px black;
@@ -94,15 +105,21 @@ textarea:focus, input:focus{
 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-
+    
     height: 25rem;
     width: 15rem;
     padding: 3rem;
     padding-top: 1rem;
+    transform: translate(-50%, -50%);
 
+    opacity: 1;
+    transition: opacity 100ms;
     display: flex;
     flex-direction: column;
+}
+
+.hide {
+    opacity: 0;
 }
 
 .book-input label {
@@ -158,4 +175,8 @@ textarea:focus, input:focus{
 #checkbox {
     display: inline;
     margin-top: 1em
+}
+
+.explanation {
+    text-align: center;
 }

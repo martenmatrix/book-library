@@ -1,7 +1,10 @@
 
 const modal = document.querySelector('#book-input-modal');
+const modalForm = document.querySelector('#book-input-modal form')
 const bookSection = document.querySelector('#added-books');
 
+
+let currentTimer;
 let myLibrary = [];
 
 function Book(title, author, amountPages, isRead) {
@@ -55,9 +58,27 @@ function displayEachBook() {
         currentBook.appendChild(horizontalRule);
         currentBook.appendChild(currentAuthor);
         currentBook.appendChild(currentPages);
+
+        //add event listener for deletion
+        currentBook.addEventListener('mousedown', startTimer);
+        currentBook.addEventListener('mouseup', stopTimer);
         } 
     );
 };
+
+function startTimer(e) {
+    currentTimer = Date.now();
+};
+
+//stops the timer and deletes the element, if div was pressed for 5 seconds
+function stopTimer(e) {
+    currentTimer = Date.now() - currentTimer;
+
+    if (currentTimer > 3000) {
+        e.target.remove();
+    };
+};
+
 
 function refreshDisplay() {
     resetDispay();

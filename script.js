@@ -19,6 +19,11 @@ function addBookToLibrary(object) {
     myLibrary.push(object);
 };
 
+function resetDispay() {
+    const allBooksDivs = document.querySelectorAll('#books #added-books .book');
+    allBooksDivs.forEach(bookDiv => bookDiv.remove());
+};
+
 function displayEachBook() {
 
     myLibrary.forEach(book => {
@@ -54,6 +59,11 @@ function displayEachBook() {
     );
 };
 
+function refreshDisplay() {
+    resetDispay();
+    displayEachBook();
+};
+
 function closeModal() {
     modal.style.display = 'none';
 };
@@ -71,12 +81,18 @@ function getBookFromInput() {
     return new Book(titleInput, authorInput, pagesInput, isReadInput);
 };
 
+function submitBookForm(e) {
+    e.preventDefault();
+    let newBook = getBookFromInput();
+    addBookToLibrary(newBook);
+
+    closeModal();
+    refreshDisplay();
+};
+
 function addEventListeners() {
-    const submitBookForm = document.querySelector('.book-input input[type="submit"]');
-    submitBookForm.addEventListener('onsubmit', (e) => {
-        e.preventDefault();
-        createBookFromInput();
-    });
+    const bookForm = document.querySelector('.book-input');
+    bookForm.addEventListener('submit', submitBookForm);
 
     const closeModalButton = document.querySelector('#close-button');
     closeModalButton.addEventListener('click', () => closeModal());

@@ -16,7 +16,11 @@ function updateCookies() {
 function checkCookies() {
     if (localStorage.getItem('booklist')) {
         myLibraryJSON = localStorage.getItem('booklist');
-        myLibrary = JSON.parse(myLibraryJSON);
+        myLibraryObjects = JSON.parse(myLibraryJSON);
+        myLibraryObjects.forEach(book => {
+            let currentBook = new Book(book.title, book.author, book.amountPages, book.isRead);
+            addBookToLibrary(currentBook);
+        });
     };
 };
 function Book(title, author, amountPages, isRead) {
@@ -49,11 +53,11 @@ function resetDispay() {
     allBooksDivs.forEach(bookDiv => bookDiv.remove());
 };
 
-function toggleReadStatus(object) {
-    if (object.isRead === true) {
-        object.isRead = false;
+Book.prototype.toggleRead = function() {
+    if (this.isRead === true) {
+        this.isRead = false;
     } else {
-        object.isRead = true;
+        this.isRead = true;
     };
 };
 
@@ -114,7 +118,7 @@ function stopTimer(e) {
         removeBookFromLibrary(object);
         updateCookies();
     } else if (currentTimer <= 1000) {
-        toggleReadStatus(object);
+        object.toggleRead();
         refreshDisplay();
         updateCookies();
     };

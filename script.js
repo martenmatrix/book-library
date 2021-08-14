@@ -22,6 +22,16 @@ function addBookToLibrary(object) {
     myLibrary.push(object);
 };
 
+function removeBookFromLibrary(bookTitle) {
+    const objectToRemove = myLibrary.find(currentBook => currentBook.title === bookTitle);
+
+    // returns if title is not found in one of the objects of myLibrary
+    if (objectToRemove === undefined) return;
+    const indexOfObject = myLibrary.indexOf(objectToRemove);
+
+    myLibrary.splice(indexOfObject, 1);
+};
+
 function resetDispay() {
     const allBooksDivs = document.querySelectorAll('#books #added-books .book');
     allBooksDivs.forEach(bookDiv => bookDiv.remove());
@@ -32,7 +42,7 @@ function displayEachBook() {
     myLibrary.forEach(book => {
         //create the informations box
         let currentBook = document.createElement('div');
-        currentBook.id = book.title;
+        currentBook.setAttribute('data-title', book.title);
         currentBook.classList.add('book');
 
         //create the elements for the information box
@@ -76,6 +86,7 @@ function stopTimer(e) {
 
     if (currentTimer > 3000) {
         e.target.remove();
+        removeBookFromLibrary(e.target.dataset.title);
     };
 };
 

@@ -23,13 +23,16 @@ function checkCookies() {
         });
     };
 };
-function Book(title, author, amountPages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.amountPages = amountPages;
-    this.isRead = isRead;
 
-    this.info = function() {
+class Book {
+    constructor(title, author, amountPages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.amountPages = amountPages;
+        this.isRead = isRead;
+    };
+
+    get info()  {
         return `${this.title} by ${this.author}, ${this.amountPages} pages, ${this.isRead ? 'read' : 'not read yet'}`;
     };
 };

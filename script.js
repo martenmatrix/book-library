@@ -35,6 +35,14 @@ class Book {
     get info()  {
         return `${this.title} by ${this.author}, ${this.amountPages} pages, ${this.isRead ? 'read' : 'not read yet'}`;
     };
+
+    toggleRead() {
+        if (this.isRead === true) {
+            this.isRead = false;
+        } else {
+            this.isRead = true;
+        };
+    }
 };
 
 function addBookToLibrary(object) {
@@ -54,14 +62,6 @@ function getObjectFromTitle(bookTitle) {
 function resetDispay() {
     const allBooksDivs = document.querySelectorAll('#books #added-books .book');
     allBooksDivs.forEach(bookDiv => bookDiv.remove());
-};
-
-Book.prototype.toggleRead = function() {
-    if (this.isRead === true) {
-        this.isRead = false;
-    } else {
-        this.isRead = true;
-    };
 };
 
 function displayEachBook() {
